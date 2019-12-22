@@ -187,11 +187,13 @@ class Core(CorePluginBase):
                     tid_status['download_location'], os.path.normpath(f['path'])
                 )
                 dest = os.path.normpath(self.config['extract_path'])
-                if self.config['use_name_folder']:
-                    dest = os.path.join(dest, tid_status['name'])
+                # Force disable new folder option in this version (in-place-uncheck bugfix)
+                # if self.config['use_name_folder']:
+                #    dest = os.path.join(dest, tid_status['name'])
 
                 # Override destination if in_place_extraction is set
-                if self.config["in_place_extraction"]:
+                # Force this always enabled because of random uncheck bug
+                # if self.config["in_place_extraction"]:
                     name = tid_status["name"]
                     save_path = tid_status["download_location"]
                     dest = os.path.join(save_path, name)
